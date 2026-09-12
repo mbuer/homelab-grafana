@@ -193,15 +193,36 @@ Avoid:
 
 ## Current status
 
-Repository structure prepared.
+Working Grafana deployment on `ubuntu-infra`.
 
-Next steps:
+Implemented:
 
-1. configure Docker networking
-2. configure Docker Compose
-3. provision the Prometheus data source
-4. configure dashboard provisioning
-5. deploy Grafana
-6. verify Prometheus connectivity
-7. build the Proxmox Health dashboard
-8. commit the dashboard JSON to Git
+- Grafana deployed with Docker Compose
+- Prometheus provisioned as the default data source
+- dashboard provisioning enabled
+- `Proxmox Health` dashboard stored in Git
+- dashboard automatically loaded into Grafana
+- configuration kept separate from runtime state
+- `.env` excluded from Git
+- deployment designed to be portable to another server
+
+Current dashboard coverage:
+
+- CPU utilization
+- CPU and system temperatures
+- memory utilization
+- system load
+- root filesystem usage
+- physical network throughput
+- network drops and errors
+- NVMe wear and SMART status
+- battery charge and temperature
+- AC power state
+- Prometheus target availability
+
+Future additions may include:
+
+- alerting
+- Loki dashboards
+- broader infrastructure dashboards
+- additional Home Lab hosts

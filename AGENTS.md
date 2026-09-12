@@ -41,26 +41,33 @@ Grafana queries and visualizes them.
 
 Do not move metric-collection logic into Grafana.
 
-## Current dashboard focus
+## Current deployment
 
-The first dashboard is `Proxmox Health`.
+Grafana is running successfully on `ubuntu-infra`.
 
-It should answer:
+Current implementation includes:
 
-**Is the Proxmox server healthy?**
+- Docker Compose deployment
+- Prometheus provisioned as the default data source
+- dashboard provisioning enabled
+- `Proxmox Health` dashboard stored in Git
+- automatic dashboard loading
+- environment-specific values kept outside Git
+- persistent Grafana runtime data kept outside Git
 
-Primary areas:
+## Current dashboard coverage
+
+The `Proxmox Health` dashboard includes:
 
 - CPU utilization
-- CPU temperature
+- CPU and system temperatures
 - memory utilization
 - system load
-- filesystem usage
-- network throughput
-- network errors and drops
-- NVMe temperature
-- NVMe SMART health and wear
-- battery state and temperature
+- root filesystem usage
+- physical network throughput
+- network drops and errors
+- NVMe wear and SMART health
+- battery charge and temperature
 - AC power state
 - Prometheus target availability
 
@@ -108,3 +115,12 @@ The repository should remain usable if Grafana is moved from `ubuntu-infra` to a
 A migration must not require manually rebuilding dashboards from screenshots or memory.
 
 Runtime data may be restored separately if needed, but dashboards and provisioning must remain recoverable directly from Git.
+
+## Future additions
+
+Possible future work:
+
+- alerting
+- Loki dashboards
+- broader infrastructure overview dashboards
+- additional Home Lab hosts
